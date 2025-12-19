@@ -37,27 +37,33 @@
         flex-wrap: wrap;
     }
 
-    .input-area input {
-        width: 310px;
-        padding: 8px;
-        font-size: 50px;
-        font-weight: bold;
-        border-radius: 16px;
-        border: 2px solid #94a3b8;
-        text-align: center;
-        background: #eef2f7;
-    }
+.input-area input {
+    width: 310px;
+    height: 50px;             /* ← ارتفاع ثابت */
+    padding: 0;               /* نلغي تأثير padding */
+    font-size: 46px;
+    font-weight: bold;
+    border-radius: 16px;
+    border: 2px solid #94a3b8;
+    text-align: center;
+    background: #eef2f7;
+    line-height: 50px;        /* يوسّط الرقم عمودياً */
+}
 
-    .input-area button {
-        padding: 4px 6px;
-        font-size: 18px;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        background: #1e293b;
-        color: #ffffff;
-        font-weight: bold;
-    }
+
+.input-area button {
+    height: 50px;              /* ← هذا هو الارتفاع الحقيقي */
+    padding: 0 26px;           /* العرض فقط */
+    font-size: 20px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    background: #1e293b;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 50px;         /* يوسّط النص عمودياً */
+}
+
 
     .installments-box {
         background: #FFBF78;
