@@ -9,13 +9,13 @@
         font-family: "Cairo", sans-serif;
         background: #FFCF71;
         margin: 0;
-        padding: 20px;
+        padding: 12px;          /* ⬅️ كان 20 */
         color: #1f2933;
     }
 
     .container {
         background: #fdfefe;
-        padding: 25px;
+        padding: 20px;         /* ⬅️ أقل */
         border-radius: 16px;
         max-width: 1200px;
         margin: auto;
@@ -24,7 +24,8 @@
 
     h1 {
         text-align: center;
-        margin-bottom: 25px;
+        margin-top: 0;         /* ⬅️ رفع العنوان */
+        margin-bottom: 16px;
         font-size: 28px;
         font-weight: bold;
     }
@@ -33,41 +34,40 @@
         display: flex;
         justify-content: center;
         gap: 15px;
-        margin-bottom: 25px;
+        margin-top: 0;         /* ⬅️ صعود */
+        margin-bottom: 18px;   /* ⬅️ أقل */
         flex-wrap: wrap;
     }
 
-.input-area input {
-    width: 310px;
-    height: 50px;             /* ← ارتفاع ثابت */
-    padding: 0;               /* نلغي تأثير padding */
-    font-size: 46px;
-    font-weight: bold;
-    border-radius: 16px;
-    border: 2px solid #94a3b8;
-    text-align: center;
-    background: #eef2f7;
-    line-height: 50px;        /* يوسّط الرقم عمودياً */
-}
+    .input-area input {
+        width: 310px;
+        height: 50px;
+        padding: 0;
+        font-size: 46px;
+        font-weight: bold;
+        border-radius: 16px;
+        border: 2px solid #94a3b8;
+        text-align: center;
+        background: #eef2f7;
+        line-height: 50px;
+    }
 
-
-.input-area button {
-    height: 50px;              /* ← هذا هو الارتفاع الحقيقي */
-    padding: 0 26px;           /* العرض فقط */
-    font-size: 20px;
-    border-radius: 14px;
-    border: none;
-    cursor: pointer;
-    background: #1e293b;
-    color: #ffffff;
-    font-weight: bold;
-    line-height: 50px;         /* يوسّط النص عمودياً */
-}
-
+    .input-area button {
+        height: 50px;
+        padding: 0 26px;
+        font-size: 20px;
+        border-radius: 14px;
+        border: none;
+        cursor: pointer;
+        background: #1e293b;
+        color: #ffffff;
+        font-weight: bold;
+        line-height: 50px;
+    }
 
     .installments-box {
         background: #FFBF78;
-        padding: 20px;
+        padding: 18px;         /* ⬅️ أقل */
         border-radius: 16px;
     }
 
@@ -79,40 +79,39 @@
 
     .plan {
         border-radius: 14px;
-        padding: 14px;
+        padding: 8px 14px 16px;
         text-align: center;
         border: 1px solid #cbd5e1;
     }
 
     .plan h3 {
         font-size: 20px;
-        margin-bottom: 6px;
+        margin-top: 0;
+        margin-bottom: 18px;
     }
 
     .total {
         font-size: 18px;
         color: #475569;
-        margin-bottom: 4px;
     }
 
     .total-number {
-        font-size: 36px;
-        
-        color: #0f172a;
         display: block;
-        line-height: 1.1;
+        font-size: 36px;
+        color: #0f172a;
+        margin-top: 12px;
+        line-height: 1.15;
     }
 
     .monthly {
-        margin-top: 6px;
-        line-height: 1.1;
+        margin-top: 22px;
     }
 
     .monthly-label {
         font-size: 16px;
         color: #475569;
         display: block;
-        margin-bottom: 2px;
+        margin-bottom: 10px;
     }
 
     .monthly-number {
