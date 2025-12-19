@@ -37,18 +37,16 @@
         flex-wrap: wrap;
     }
 
-.input-area input {
-    width: 310px;          /* أعرض */
-    padding: 16px;         /* أعمق */
-    font-size: 50px;       /* رقم كبير جداً */
-    font-weight: bold;
-    border-radius: 16px;
-    border: 2px solid #94a3b8;
-    text-align: center;
-    background: #eef2f7;
-}
-
-
+    .input-area input {
+        width: 310px;
+        padding: 16px;
+        font-size: 50px;
+        font-weight: bold;
+        border-radius: 16px;
+        border: 2px solid #94a3b8;
+        text-align: center;
+        background: #eef2f7;
+    }
 
     .input-area button {
         padding: 10px 15px;
@@ -86,14 +84,24 @@
         margin-bottom: 12px;
     }
 
+    /* كلمة المجموع */
     .total {
-        font-size: 34px;
+        font-size: 20px;
         color: #475569;
         margin-bottom: 10px;
     }
 
-    .monthly {
+    /* رقم المجموع */
+    .total-number {
         font-size: 32px;
+        color: #0f172a;
+        display: block;
+        margin-top: 5px;
+    }
+
+    /* القسط الشهري */
+    .monthly {
+        font-size: 34px;
         font-weight: bold;
         color: #0f172a;
     }
@@ -127,12 +135,11 @@
     <h1>صدى ستور للتقسيط</h1>
 
     <div class="input-area">
-        <input type="text" id="price" placeholder=" سعر الجهاز"
+        <input type="text" id="price" placeholder="سعر الجهاز"
                oninput="formatInput(this)">
         <button onclick="calculate()">حساب الأقساط</button>
     </div>
 
-    <!-- خلفية الأقساط -->
     <div class="installments-box">
         <div class="plans" id="plans"></div>
     </div>
@@ -180,7 +187,10 @@ function calculate() {
         plansDiv.innerHTML += `
             <div class="plan">
                 <h3>${months} شهر</h3>
-                <div class="total">المجموع: ${formatNumber(total)}</div>
+                <div class="total">
+                    المجموع
+                    <span class="total-number">${formatNumber(total)}</span>
+                </div>
                 <div class="monthly">${formatNumber(monthly)}</div>
             </div>
         `;
