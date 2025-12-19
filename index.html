@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>صدى ستور للتقسيط</title>
+
+<style>
+    body {
+        font-family: "Cairo", sans-serif;
+        background: #FFCF71;
+        margin: 0;
+        padding: 20px;
+        color: #1f2933;
+    }
+
+    .container {
+        background: #fdfefe;
+        padding: 25px;
+        border-radius: 16px;
+        max-width: 1200px;
+        margin: auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .input-area {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+
+    .input-area input {
+        width: 280px;
+        padding: 14px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 1px solid #cbd5e1;
+        text-align: center;
+        background: #f1f5f9;
+    }
+
+    .input-area button {
+        padding: 14px 25px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        background: #1e293b;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    /* صندوق الأقساط */
+    .installments-box {
+        background: #FFBF78;
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    .plans {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .plan {
+        border-radius: 14px;
+        padding: 22px;
+        text-align: center;
+        border: 1px solid #cbd5e1;
+    }
+
+    .plan h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .total {
+        font-size: 18px;
+        color: #475569;
+        margin-bottom: 10px;
+    }
+
+    .monthly {
+        font-size: 34px;
+        font-weight: bold;
+        color: #0f172a;
+    }
+
+    /* ألوان هادئة للخانات */
+    .plan:nth-child(1) { background: #f8fafc; }
+    .plan:nth-child(2) { background: #eef2ff; }
+    .plan:nth-child(3) { background: #ecfeff; }
+    .plan:nth-child(4) { background: #f0fdf4; }
+    .plan:nth-child(5) { background: #fff7ed; }
+    .plan:nth-child(6) { background: #fdf4ff; }
+    .plan:nth-child(7) { background: #fefce8; }
+
+    @media (max-width: 900px) {
+        .plans {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 500px) {
+        .plans {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>صدى ستور للتقسيط</h1>
+
+    <div class="input-area">
+        <input type="text" id="price" placeholder="ادخل سعر الجهاز"
+               oninput="formatInput(this)">
+        <button onclick="calculate()">حساب الأقساط</button>
+    </div>
+
+    <!-- خلفية الأقساط -->
+    <div class="installments-box">
+        <div class="plans" id="plans"></div>
+    </div>
+</div>
+
+<script>
+const EXTRA_AMOUNT = 10000;
+
+const rates = {
+    4: 1.27,
+    6: 1.35,
+    8: 1.40,
+    10: 1.46,
+    12: 1.52,
+    13: 1.52,
+    18: 1.72
+};
+
+function formatNumber(num) {
+    return num.toLocaleString("en-US");
+}
+
+function formatInput(input) {
+    let value = input.value.replace(/,/g, '');
+    if (!isNaN(value) && value !== '') {
+        input.value = formatNumber(parseInt(value));
+    }
+}
+
+function calculate() {
+    const value = document.getElementById("price").value.replace(/,/g, '');
+    const basePrice = parseInt(value);
+
+    if (isNaN(basePrice)) return;
+
+    const finalPrice = basePrice + EXTRA_AMOUNT;
+
+    const plansDiv = document.getElementById("plans");
+    plansDiv.innerHTML = "";
+
+    for (let months in rates) {
+        const total = Math.round(finalPrice * rates[months]);
+        const monthly = Math.floor(total / months);
+
+        plansDiv.innerHTML += `
+            <div class="plan">
+                <h3>${months} شهر</h3>
+                <div class="total">المجموع: ${formatNumber(total)}</div>
+                <div class="monthly">${formatNumber(monthly)}</div>
+            </div>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
