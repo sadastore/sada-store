@@ -2,20 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>صدى ستور للتقسيط</title>
+<title>Aqssat By Sada Center </title>
 
 <style>
     body {
         font-family: "Cairo", sans-serif;
         background: #FFCF71;
         margin: 0;
-        padding: 12px;          /* ⬅️ كان 20 */
+        padding: 12px;
         color: #1f2933;
     }
 
     .container {
         background: #fdfefe;
-        padding: 20px;         /* ⬅️ أقل */
+        padding: 20px;
         border-radius: 16px;
         max-width: 1200px;
         margin: auto;
@@ -24,7 +24,7 @@
 
     h1 {
         text-align: center;
-        margin-top: 0;         /* ⬅️ رفع العنوان */
+        margin-top: 0;
         margin-bottom: 16px;
         font-size: 28px;
         font-weight: bold;
@@ -33,9 +33,8 @@
     .input-area {
         display: flex;
         justify-content: center;
-        gap: 15px;
-        margin-top: 0;         /* ⬅️ صعود */
-        margin-bottom: 18px;   /* ⬅️ أقل */
+        gap: 12px;
+        margin-bottom: 18px;
         flex-wrap: wrap;
     }
 
@@ -59,7 +58,7 @@
         border-radius: 14px;
         border: none;
         cursor: pointer;
-        background: #1e293b;
+        background: #1e293b;   /* نفس اللون */
         color: #ffffff;
         font-weight: bold;
         line-height: 50px;
@@ -67,7 +66,7 @@
 
     .installments-box {
         background: #FFBF78;
-        padding: 18px;         /* ⬅️ أقل */
+        padding: 18px;
         border-radius: 16px;
     }
 
@@ -151,6 +150,7 @@
         <input type="text" id="price" placeholder="سعر الجهاز"
                oninput="formatInput(this)">
         <button onclick="calculate()">حساب الأقساط</button>
+        <button onclick="resetCalculator()">مسح</button>
     </div>
 
     <div class="installments-box">
@@ -185,11 +185,9 @@ function formatInput(input) {
 function calculate() {
     const value = document.getElementById("price").value.replace(/,/g, '');
     const basePrice = parseInt(value);
-
     if (isNaN(basePrice)) return;
 
     const finalPrice = basePrice + EXTRA_AMOUNT;
-
     const plansDiv = document.getElementById("plans");
     plansDiv.innerHTML = "";
 
@@ -200,12 +198,10 @@ function calculate() {
         plansDiv.innerHTML += `
             <div class="plan">
                 <h3>${months} شهر</h3>
-
                 <div class="total">
                     المجموع
                     <span class="total-number">${formatNumber(total)}</span>
                 </div>
-
                 <div class="monthly">
                     <span class="monthly-label">القسط الشهري</span>
                     <span class="monthly-number">${formatNumber(monthly)}</span>
@@ -213,6 +209,11 @@ function calculate() {
             </div>
         `;
     }
+}
+
+function resetCalculator() {
+    document.getElementById("price").value = "";
+    document.getElementById("plans").innerHTML = "";
 }
 </script>
 
